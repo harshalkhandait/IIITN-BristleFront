@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "397702399158",
+    "firebase_url": "https://alpha-testing-gui.firebaseio.com",
+    "project_id": "alpha-testing-gui",
+    "storage_bucket": "alpha-testing-gui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:397702399158:android:8155b5ddb721f0fb319217",
+        "android_client_info": {
+          "package_name": "com.harshalkhandait.alphatesting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "397702399158-hme0abi73ooo9g6adeoek7vs0lha08js.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4JMlZSirStxc_P-t4ZJQWjbLtKGHi0Ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "397702399158-hme0abi73ooo9g6adeoek7vs0lha08js.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

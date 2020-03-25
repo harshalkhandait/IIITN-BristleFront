@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>397702399158-se9qqeat3aoqmpk1ldbl0rcp0pa46qpr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.397702399158-se9qqeat3aoqmpk1ldbl0rcp0pa46qpr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAuDWArdmnPN6eqStaaV1uuTxARhuiDTms</string>
+	<key>GCM_SENDER_ID</key>
+	<string>397702399158</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.harshalkhandait.alphatesting</string>
+	<key>PROJECT_ID</key>
+	<string>alpha-testing-gui</string>
+	<key>STORAGE_BUCKET</key>
+	<string>alpha-testing-gui.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:397702399158:ios:745b226964405a21319217</string>
+	<key>DATABASE_URL</key>
+	<string>https://alpha-testing-gui.firebaseio.com</string>
+</dict>
+</plist>
