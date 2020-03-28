@@ -1,9 +1,11 @@
 import 'package:alphatesting/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 final _firestore = Firestore.instance;
+final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
 FirebaseUser loggedInUser;
 
 class HomePage extends StatefulWidget {
