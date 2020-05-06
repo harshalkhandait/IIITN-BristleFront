@@ -4,6 +4,8 @@ This is a flutter application developed by Harshal Khandait
 
 ## Getting Started
 
+#### Note : Some Security Sensitive Part of the code has been removed. This Part is only for references.
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
@@ -34,7 +36,7 @@ Change tab to SDK Tools. Click on show details, and select all Android SDK Build
   
 Link :
   
-     https://github.com/trippymaniac/BristleFront.git
+     https://github.com/trippymaniac/IIITN-BristleFront.git
   
 1. On GitHub, navigate to the main page of the repository.  
 <p align="center">
