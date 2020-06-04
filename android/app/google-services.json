@@ -1,35 +1,42 @@
 {
   "project_info": {
-    "project_number": "397702399158",
-    "firebase_url": "https://alpha-testing-gui.firebaseio.com",
-    "project_id": "alpha-testing-gui",
-    "storage_bucket": "alpha-testing-gui.appspot.com"
+    "project_number": "573927375329",
+    "firebase_url": "https://remotesignaturesystem.firebaseio.com",
+    "project_id": "remotesignaturesystem",
+    "storage_bucket": "remotesignaturesystem.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:397702399158:android:8155b5ddb721f0fb319217",
+        "mobilesdk_app_id": "1:573927375329:android:82a95eedfd4a1c316192a0",
         "android_client_info": {
           "package_name": "com.harshalkhandait.alphatesting"
         }
       },
       "oauth_client": [
         {
-          "client_id": "397702399158-hme0abi73ooo9g6adeoek7vs0lha08js.apps.googleusercontent.com",
+          "client_id": "573927375329-3pjpgn9aba11h5anivoq5t2i4gr7tniv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC4JMlZSirStxc_P-t4ZJQWjbLtKGHi0Ag"
+          "current_key": "AIzaSyDCRoXH2yzajHri3frzfEcaPf8IRgR7gBY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "397702399158-hme0abi73ooo9g6adeoek7vs0lha08js.apps.googleusercontent.com",
+              "client_id": "573927375329-3pjpgn9aba11h5anivoq5t2i4gr7tniv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "573927375329-ume2slojtiqs96sql6m3446ga5n77fk2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.harshalkhandait.alphatesting"
+              }
             }
           ]
         }

@@ -3,34 +3,34 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>397702399158-se9qqeat3aoqmpk1ldbl0rcp0pa46qpr.apps.googleusercontent.com</string>
+	<string>573927375329-ume2slojtiqs96sql6m3446ga5n77fk2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.397702399158-se9qqeat3aoqmpk1ldbl0rcp0pa46qpr</string>
+	<string>com.googleusercontent.apps.573927375329-ume2slojtiqs96sql6m3446ga5n77fk2</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAuDWArdmnPN6eqStaaV1uuTxARhuiDTms</string>
+	<string>AIzaSyDKkKEAqVlZPtlisyiCmvkrITL77RbtC-Q</string>
 	<key>GCM_SENDER_ID</key>
-	<string>397702399158</string>
+	<string>573927375329</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.harshalkhandait.alphatesting</string>
 	<key>PROJECT_ID</key>
-	<string>alpha-testing-gui</string>
+	<string>remotesignaturesystem</string>
 	<key>STORAGE_BUCKET</key>
-	<string>alpha-testing-gui.appspot.com</string>
+	<string>remotesignaturesystem.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:397702399158:ios:745b226964405a21319217</string>
+	<string>1:573927375329:ios:4b4db9898b57ab5e6192a0</string>
 	<key>DATABASE_URL</key>
-	<string>https://alpha-testing-gui.firebaseio.com</string>
+	<string>https://remotesignaturesystem.firebaseio.com</string>
 </dict>
 </plist>
