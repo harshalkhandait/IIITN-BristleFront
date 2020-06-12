@@ -33,7 +33,7 @@ Open Android Studio, click on Configure Section where you will find SDK Manager.
 Change tab to SDK Tools. Click on show details, and select all Android SDK Build Tools. Click on Install.
 
 
-### Install [Xcode](https://apps.apple.com/in/app/xcode/id497799835?mt=12)
+### Install [Xcode](https://developer.apple.com/xcode/)
   
 Xcode is an integrated development environment for macOS containing a suite of software development tools developed by Apple for developing software for macOS, iOS, iPadOS, watchOS, and tvOS.
 Note : Only for MacOS users.
@@ -47,9 +47,7 @@ Link :
      https://github.com/trippymaniac/IIITN-BristleFront.git
   
 1. On GitHub, navigate to the main page of the repository.  
-<p align="center">
-
-</p>
+<p align="center"></p>
 2. To clone the repository using HTTPS, under "Clone with HTTPS", click . To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click Use SSH, then click on the copy symbol.
 
 
