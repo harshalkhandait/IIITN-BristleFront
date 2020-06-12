@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class DeveloperCard extends StatelessWidget {
+  static const String id = "DeveloperCard";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

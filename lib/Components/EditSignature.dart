@@ -1,9 +1,10 @@
 import 'package:alphatesting/Animations/FadeAnimations.dart';
-import 'package:alphatesting/Screens/HomePage.dart';
+import 'package:alphatesting/Screens/AccessPage.dart';
+
 
 import 'package:flutter/material.dart';
 
-class ConfirmationButton extends StatelessWidget {
+class EditSignatureButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,7 +15,7 @@ class ConfirmationButton extends StatelessWidget {
           FadeAnimation(
             1.5,
             Text(
-              'Not Sure about the decision?',
+              'Signature isn\'t Correct?',
               style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
             ),
           ),
@@ -23,10 +24,10 @@ class ConfirmationButton extends StatelessWidget {
             FlatButton(
               onPressed: () {
                 Navigator.of(context)
-              .popUntil(ModalRoute.withName(HomePage.id));
+              .popUntil(ModalRoute.withName(AccessPage.id));
               },
               child: Text(
-                'Return Later',
+                'New Attempt',
                 style: TextStyle(
                     color: Color.fromRGBO(143, 148, 251, 1),
                     fontWeight: FontWeight.bold,

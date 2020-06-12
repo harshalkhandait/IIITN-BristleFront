@@ -4,15 +4,15 @@ import 'package:alphatesting/Components/SignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class HomePage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static const String id = "Home Page";
   @override
-  _HomePageState createState() => _HomePageState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
 bool showSpinner = false;
 
-class _HomePageState extends State<HomePage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

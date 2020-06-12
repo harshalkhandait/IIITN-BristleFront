@@ -1,3 +1,6 @@
+import 'package:alphatesting/Screens/ChatScreen.dart';
+import 'package:alphatesting/Screens/Developers.dart';
+import 'package:alphatesting/Screens/ImageUpload.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/AccessPage.dart';
@@ -12,10 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HomePage.id,
+      initialRoute: LoginPage.id,
       routes: {
-        HomePage.id: (context) => HomePage(),
         AccessPage.id: (context) => AccessPage(),
+        ChatScreen.id: (context) => ChatScreen(),
+        DeveloperCard.id: (context) => DeveloperCard(),
+        LoginPage.id: (context) => LoginPage(),
+        ImageUpload.id : (context) => ImageUpload(),
+    
         SignUp.id: (context) => SignUp(),
       },
       debugShowCheckedModeBanner: false,

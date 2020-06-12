@@ -1,16 +1,15 @@
+import 'dart:typed_data';
+
 import 'package:alphatesting/Components/Confirmation.dart';
 import 'package:alphatesting/Components/DrawBar.dart';
+import 'package:alphatesting/Screens/ImageUpload.dart';
 import 'package:alphatesting/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:painter2/painter2.dart';
-import 'dart:typed_data';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 final _firestore = Firestore.instance;
-final FirebaseDatabase _firebaseDatabase = FirebaseDatabase.instance;
 FirebaseUser loggedInUser;
 
 class HomePage extends StatefulWidget {
@@ -112,22 +111,7 @@ class _HomePageState extends State<HomePage> {
               Uint8List bytes = await _controller.exportAsPNGBytes();
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (BuildContext context) {
-                  return Scaffold(
-                    appBar: AppBar(
-                      title: Text(
-                        'View your image',
-                        style: TextStyle(
-                          fontFamily: 'Srisakdi',
-                          color: kDeveloperCardThemeColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      backgroundColor: Colors.white,
-                    ),
-                    body: Container(
-                      child: Image.memory(bytes),
-                    ),
-                  );
+                  return ImageUpload(bytes: bytes);
                 }),
               );
             }),
@@ -137,11 +121,11 @@ class _HomePageState extends State<HomePage> {
       appBar: _signaturePanel == false
           ? AppBar(
               leading: IconButton(
-                  tooltip: 'Log Out',
                   icon: Icon(
                     Icons.close,
                     color: Colors.black,
                   ),
+                  tooltip: 'Log Out',
                   onPressed: () {
                     _auth.signOut();
                     Navigator.pop(context);
@@ -195,7 +179,10 @@ class _HomePageState extends State<HomePage> {
                     child: Painter(_controller),
                   ),
                 ),
-                ConfirmationButton(),
+                Hero(
+                  tag: 'logo',
+                  child: ConfirmationButton(),
+                ),
               ],
             )
           : Column(

@@ -1,9 +1,9 @@
 import 'package:alphatesting/Animations/FadeAnimations.dart';
-import 'package:alphatesting/Screens/HomePage.dart';
-
 import 'package:flutter/material.dart';
 
-class ConfirmationButton extends StatelessWidget {
+class UploadButton extends StatelessWidget {
+  UploadButton({this.uploadFunction});
+  final Function uploadFunction;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,19 +14,16 @@ class ConfirmationButton extends StatelessWidget {
           FadeAnimation(
             1.5,
             Text(
-              'Not Sure about the decision?',
+              'Are you Sure?',
               style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
             ),
           ),
           FadeAnimation(
             1.5,
             FlatButton(
-              onPressed: () {
-                Navigator.of(context)
-              .popUntil(ModalRoute.withName(HomePage.id));
-              },
+              onPressed: uploadFunction,
               child: Text(
-                'Return Later',
+                'Upload',
                 style: TextStyle(
                     color: Color.fromRGBO(143, 148, 251, 1),
                     fontWeight: FontWeight.bold,
@@ -38,4 +35,11 @@ class ConfirmationButton extends StatelessWidget {
       ),
     );
   }
+
+//  Future<Uri> _pickSaveImage(String imageId) async {
+//    StorageReference ref =
+//        FirebaseStorage.instance.ref().child(imageId).child("image.jpg");
+//    StorageUploadTask uploadTask = ref.putFile(imageFile);
+//    return (await uploadTask.future).downloadUrl;
+//  }
 }
