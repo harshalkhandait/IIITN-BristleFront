@@ -1,13 +1,9 @@
-import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:alphatesting/Components/Confirmation.dart';
-import 'package:alphatesting/Components/EditSignature.dart';
-import 'package:alphatesting/Components/UploadButton.dart';
 import 'package:alphatesting/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 
 class ImageUpload extends StatefulWidget {
   ImageUpload({this.bytes});
@@ -18,6 +14,19 @@ class ImageUpload extends StatefulWidget {
 }
 
 class _ImageUploadState extends State<ImageUpload> {
+  var user;
+  final _auth = FirebaseAuth.instance;
+  void getCurrentUser() async {
+    try {
+      user = await _auth.currentUser();
+      if (user != null) {
+        print(user.uid);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +35,24 @@ class _ImageUploadState extends State<ImageUpload> {
         iconTheme: IconThemeData(
           color: kUniversalThemeColor,
         ),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.cloud_upload),
+            onPressed: () async {
+              final Image _image = Image.memory(widget.bytes);
+              final String _path = '/storage/emulated/0/Download';
+              StorageReference ref = FirebaseStorage.instance
+                  .ref()
+                  .child('image_${DateTime.now()})');
+              StorageUploadTask uploadTask = ref.putData(widget.bytes);
+              var downloadURL =
+                  await (await uploadTask.onComplete).ref.getDownloadURL();
+              print(downloadURL);
+              print(_image.runtimeType);
+              print(widget.bytes.length);
+            },
+          )
+        ],
         title: Text(
           'View your image',
           style: TextStyle(
@@ -39,55 +66,10 @@ class _ImageUploadState extends State<ImageUpload> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                UploadButton(
-                  uploadFunction: () {
-                    print(File.fromRawPath(widget.bytes));
-                  },
-                ),
-              ],
-            ),
-            Container(
-              child: Image.memory(widget.bytes),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                ConfirmationButton(),
-                EditSignatureButton(),
-              ],
-            )
+            Image.memory(widget.bytes),
           ],
         ),
       ),
     );
   }
-
-  uploadImage(File image) async {
-    StorageReference reference =
-        FirebaseStorage.instance.ref().child(image.path.toString());
-    StorageUploadTask uploadTask = reference.putFile(image);
-
-    StorageTaskSnapshot downloadUrl = (await uploadTask.onComplete);
-
-    String url = (await downloadUrl.ref.getDownloadURL());
-
-    print(url);
-  }
-
-  Future<File> getImageFileFromAssets(String path) async {
-    final byteData = widget.bytes;
-
-    final file = File('${(await getTemporaryDirectory()).path}/$path');
-    await file.writeAsBytes(byteData.buffer
-        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes));
-    return file;
-  }
-
-  // Future<File> getImage() async {
-  //   final File _image = Image.memory(widget.bytes);
-  //   final String _path = (await getTemporaryDirectory()).path;
-  // }
 }

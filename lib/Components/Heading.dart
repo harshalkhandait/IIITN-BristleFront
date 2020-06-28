@@ -69,6 +69,7 @@ class Heading extends StatelessWidget {
                 child: Center(
                   child: Text(
                     heading,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 40,

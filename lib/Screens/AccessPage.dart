@@ -1,5 +1,6 @@
 import 'package:alphatesting/Screens/ChatScreen.dart';
 import 'package:alphatesting/Screens/HomePage.dart';
+import 'package:alphatesting/Screens/UploadWidget.dart';
 import 'package:alphatesting/Screens/developers.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _AccessPageState extends State<AccessPage> {
 
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+    UploadWidget(),
     ChatScreen(),
     DeveloperCard(),
   ];
@@ -45,6 +47,10 @@ class _AccessPageState extends State<AccessPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.cloud_upload),
+            title: Text('Cloud Upload'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),

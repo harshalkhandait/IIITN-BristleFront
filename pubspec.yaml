@@ -34,7 +34,8 @@ dependencies:
   firebase_storage:
   painter2: any
   flutter_colorpicker: ^0.3.4
-  path_provider: ^1.6.10
+  path_provider: ^1.6.11
+  image_picker: ^0.6.7+2
 dev_dependencies:
   flutter_test:
     sdk: flutter

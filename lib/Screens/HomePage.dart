@@ -1,12 +1,14 @@
+import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:alphatesting/Components/Confirmation.dart';
 import 'package:alphatesting/Components/DrawBar.dart';
 import 'package:alphatesting/Screens/ImageUpload.dart';
 import 'package:alphatesting/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:painter2/painter2.dart';
 
 final _firestore = Firestore.instance;
@@ -23,7 +25,24 @@ class _HomePageState extends State<HomePage> {
   final _auth = FirebaseAuth.instance;
   bool _signaturePanel;
   bool _finished;
+  bool _imagePresent;
+  String buttonValue = 'Upload';
+  var downloadURL;
   PainterController _controller;
+
+  var user;
+
+  void getCurrentUser() async {
+    try {
+      user = await _auth.currentUser();
+      if (user != null) {
+        print(user.uid);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +50,7 @@ class _HomePageState extends State<HomePage> {
     _finished = false;
     _signaturePanel = false;
     _controller = newController();
+    _imagePresent = false;
   }
 
   PainterController newController() {
@@ -40,20 +60,13 @@ class _HomePageState extends State<HomePage> {
     return controller;
   }
 
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if (user != null) {
-        loggedInUser = user;
-        print(user.uid);
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    if (downloadURL != null) {
+      _imagePresent = true;
+    } else {
+      _imagePresent = false;
+    }
     List<Widget> actions;
     if (_finished) {
       actions = <Widget>[
@@ -166,32 +179,37 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
       body: _signaturePanel == true
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                SizedBox(
-                  height: 20.0,
-                ),
-                Center(
-                  child: AspectRatio(
-                    aspectRatio: 1.0,
-                    child: Painter(_controller),
+          ? Container(
+              decoration: downloadURL != null
+                  ? BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(downloadURL),
+                      ),
+                    )
+                  : BoxDecoration(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  _imagePresent
+                      ? Container()
+                      : RaisedButton(
+                          onPressed: _pickSavedImage,
+                          child: Text(buttonValue),
+                        ),
+                  Center(
+                    child: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Painter(_controller),
+                    ),
                   ),
-                ),
-                Hero(
-                  tag: 'logo',
-                  child: ConfirmationButton(),
-                ),
-              ],
+                ],
+              ),
             )
           : Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                SizedBox(
-                  height: 20.0,
-                ),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -208,7 +226,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                ConfirmationButton(),
               ],
             ),
     );
@@ -227,5 +244,31 @@ class _HomePageState extends State<HomePage> {
       'signaturePhotoLink': '',
       'userName': loggedInUser.uid,
     });
+  }
+
+  Future<String> _pickSavedImage() async {
+    final _picker = ImagePicker();
+    PickedFile _pickedFile =
+        await _picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      buttonValue = ' Waiting to select Image';
+    });
+    StorageReference ref =
+        FirebaseStorage.instance.ref().child('${user.uid}_${DateTime.now()})');
+
+    final File _file = File(_pickedFile.path);
+
+    StorageUploadTask uploadTask = ref.putFile(_file);
+    setState(() {
+      buttonValue = 'Uploading ...';
+    });
+    downloadURL = await (await uploadTask.onComplete).ref.getDownloadURL();
+    setState(() {
+      buttonValue = 'Upload';
+    });
+    print("Runtype of download url = ${downloadURL.runtimeType}");
+    print("URL = $downloadURL");
+    setState(() {});
+    return downloadURL;
   }
 }
